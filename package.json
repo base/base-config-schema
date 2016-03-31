@@ -1,0 +1,73 @@
+{
+  "name": "base-config-schema",
+  "description": "Schema for the base-config plugin, used for normalizing config values before passing them to config.process().",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jonschlinkert/base-config-schema",
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "repository": "jonschlinkert/base-config-schema",
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/base-config-schema/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "arr-flatten": "^1.0.1",
+    "array-unique": "^0.2.1",
+    "camel-case": "^1.2.2",
+    "debug": "^2.2.0",
+    "export-files": "^2.1.1",
+    "has-glob": "^0.1.1",
+    "has-value": "^0.3.1",
+    "inflection": "^1.8.0",
+    "kind-of": "^3.0.2",
+    "lazy-cache": "^1.0.3",
+    "load-templates": "^0.10.2",
+    "map-schema": "^0.2.2",
+    "matched": "^0.4.1",
+    "mixin-deep": "^1.1.3"
+  },
+  "devDependencies": {
+    "base": "^0.8.1",
+    "base-config": "^0.5.2",
+    "base-plugins": "^0.4.10",
+    "engine-base": "^0.1.2",
+    "engine-handlebars": "^0.8.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^2.0.0",
+    "gulp-format-md": "^0.1.7",
+    "gulp-istanbul": "^0.10.3",
+    "gulp-mocha": "^2.2.0",
+    "gulp-unused": "^0.1.2",
+    "helper-coverage": "^0.1.3",
+    "helper-example": "^0.1.0",
+    "mocha": "*",
+    "through2": "^2.0.1"
+  },
+  "keywords": [],
+  "verb": {
+    "run": true,
+    "toc": false,
+    "layout": "default",
+    "tasks": [
+      "readme"
+    ],
+    "plugins": [
+      "gulp-format-md"
+    ],
+    "reflinks": [
+      "verb"
+    ],
+    "lint": {
+      "reflinks": true
+    }
+  }
+}
