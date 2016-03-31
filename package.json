@@ -10,7 +10,8 @@
   },
   "license": "MIT",
   "files": [
-    "index.js"
+    "index.js",
+    "lib"
   ],
   "main": "index.js",
   "engines": {
@@ -52,7 +53,11 @@
     "mocha": "*",
     "through2": "^2.0.1"
   },
-  "keywords": [],
+  "keywords": [
+    "base",
+    "config",
+    "schema"
+  ],
   "verb": {
     "run": true,
     "toc": false,
