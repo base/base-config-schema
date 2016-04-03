@@ -32,7 +32,7 @@
     "kind-of": "^3.0.2",
     "lazy-cache": "^1.0.3",
     "load-templates": "^0.10.2",
-    "map-schema": "^0.2.2",
+    "map-schema": "^0.2.3",
     "matched": "^0.4.1",
     "mixin-deep": "^1.1.3"
   },
