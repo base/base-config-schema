@@ -3,7 +3,6 @@
 require('mocha');
 var assert = require('assert');
 var utils = require('../lib/utils');
-var app;
 
 describe('utils', function() {
   describe('.isEmpty', function() {

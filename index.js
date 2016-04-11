@@ -7,12 +7,12 @@
 
 'use strict';
 
-var debug = require('debug')('base:base-config:schema');
+var debug = require('debug')('base:config:schema');
 var expanders = require('./lib/expanders');
 var utils = require('./lib/utils');
 
 module.exports = function configSchema(app, options) {
-  debug('creating config schema');
+  debug('initializing <%s>, called from <%s>', __filename, module.parent.id);
 
   var opts = utils.merge({sortArrays: false, omitEmpty: true}, options);
   var schema = new utils.Schema(opts);
@@ -84,7 +84,7 @@ module.exports = function configSchema(app, options) {
       return config;
     }
     var obj = fn.apply(this, arguments);
-    obj.isNormalized = true;
+    utils.define(obj, 'isNormalized', true);
     return obj;
   };
 

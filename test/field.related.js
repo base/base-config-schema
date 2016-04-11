@@ -17,6 +17,12 @@ describe('.related', function() {
     assert.deepEqual(obj, {related: { list: ['default']}});
   });
 
+  it('should arrayify `related.list`', function() {
+    var schema = configSchema(app);
+    var obj = schema.normalize({related: {list: 'default'}});
+    assert.deepEqual(obj, {related: { list: ['default']}});
+  });
+
   it('should move an array value to `related.list`', function() {
     var schema = configSchema(app);
     var obj = schema.normalize({related: ['default']});

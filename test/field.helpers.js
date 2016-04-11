@@ -9,6 +9,8 @@ require('helper-example');
 var Base = require('base');
 var app;
 
+var dir = path.resolve(__dirname, '..');
+
 describe('.field.helpers', function() {
   beforeEach(function() {
     app = new Base();
@@ -22,7 +24,7 @@ describe('.field.helpers', function() {
         schema.normalize({helpers: ['foo-bar-baz']});
         return cb(new Error('expected an error'));
       } catch (err) {
-        assert.equal(err.message, 'package.json "base" config property "helpers" > Cannot find module \'foo-bar-baz\'');
+        assert.equal(err.message, 'package.json "base" config property "helpers" > Cannot find module \'foo-bar-baz\' from \'' + dir + '\'');
         cb();
       }
     });

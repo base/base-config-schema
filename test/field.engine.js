@@ -10,6 +10,7 @@ var app;
 
 require('engine-handlebars');
 require('engine-base');
+var dir = path.resolve(__dirname, '..');
 
 describe('.field.engine', function() {
   beforeEach(function() {
@@ -24,7 +25,7 @@ describe('.field.engine', function() {
         schema.normalize({engine: ['foo-bar-baz']});
         return cb(new Error('expected an error'));
       } catch (err) {
-        assert.equal(err.message, 'package.json "base" config property "engine" > Cannot find module \'foo-bar-baz\'');
+        assert.equal(err.message, 'package.json "base" config property "engine" > Cannot find module \'foo-bar-baz\' from \'' + dir + '\'');
         cb();
       }
     });

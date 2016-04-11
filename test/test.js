@@ -38,4 +38,13 @@ describe('base-config-schema', function() {
     var obj = schema.normalize({});
     assert.deepEqual(obj, {foo: 'bar'});
   });
+
+  it('should return the object if `isNormalized` is true', function() {
+    var schema = configSchema(app);
+    var obj = {toc: true, isNormalized: true};
+    var a = schema.normalize(obj);
+    var b = schema.normalize(a);
+    var c = schema.normalize(b);
+    assert.deepEqual(c, obj);
+  });
 });

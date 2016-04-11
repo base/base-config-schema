@@ -8,6 +8,8 @@ var configSchema = require('..');
 var Base = require('base');
 var app;
 
+var dir = path.resolve(__dirname, '..');
+
 describe('.field.plugins', function() {
   beforeEach(function() {
     app = new Base();
@@ -21,7 +23,7 @@ describe('.field.plugins', function() {
         schema.normalize({plugins: ['foo-bar-baz']});
         return cb(new Error('expected an error'));
       } catch (err) {
-        assert.equal(err.message, 'package.json "base" config property "plugins" > Cannot find module \'foo-bar-baz\'');
+        assert.equal(err.message, 'package.json "base" config property "plugins" > Cannot find module \'foo-bar-baz\' from \'' + dir + '\'');
         cb();
       }
     });

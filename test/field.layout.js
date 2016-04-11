@@ -28,15 +28,4 @@ describe('.layout', function() {
       }
     });
   });
-
-  it('should throw an error when `layout.sections.name` is not defined', function(cb) {
-    var schema = configSchema(app);
-    try {
-      schema.normalize({layout: {sections: {foo: 'bar'}}});
-      cb(new Error('expected an error'));
-    } catch (err) {
-      assert.equal(err.message, 'expected `layout.name` to be a string');
-      cb();
-    }
-  });
 });

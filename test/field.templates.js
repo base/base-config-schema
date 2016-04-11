@@ -30,7 +30,7 @@ describe('.templates', function() {
     var obj = schema.normalize({
       templates: {
         posts: ['./test/fixtures/templates/*'],
-        pages: ['./test/fixtures/templates/*'],
+        pages: ['./test/fixtures/templates/*']
       }
     });
 
