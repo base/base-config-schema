@@ -18,7 +18,7 @@ describe('.field.asyncHelpers', function() {
 
   describe('asyncHelpers', function() {
     it('should throw when a module does not exist', function(cb) {
-      var schema = configSchema(app);
+      var schema = configSchema(app, {strictRequire: true});
 
       try {
         schema.normalize({asyncHelpers: ['foo-bar-baz']});
@@ -26,6 +26,17 @@ describe('.field.asyncHelpers', function() {
       } catch (err) {
         assert.equal(err.message, 'package.json "base" config property "asyncHelpers" > Cannot find module \'foo-bar-baz\' from \'' + dir + '\'');
         cb();
+      }
+    });
+
+    it('should not throw when strictRequire is not defined', function(cb) {
+      var schema = configSchema(app);
+
+      try {
+        schema.normalize({asyncHelpers: ['foo-bar-baz']});
+        cb();
+      } catch (err) {
+        cb(err);
       }
     });
 

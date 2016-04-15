@@ -17,7 +17,7 @@ describe('.field.plugins', function() {
 
   describe('plugins', function() {
     it('should throw when a module does not exist', function(cb) {
-      var schema = configSchema(app);
+      var schema = configSchema(app, {strictRequire: true});
 
       try {
         schema.normalize({plugins: ['foo-bar-baz']});
@@ -29,7 +29,7 @@ describe('.field.plugins', function() {
     });
 
     it('should throw when a local module does not exist', function(cb) {
-      var schema = configSchema(app);
+      var schema = configSchema(app, {strictRequire: true});
 
       try {
         schema.normalize({plugins: ['./foo']});

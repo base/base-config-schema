@@ -8,7 +8,7 @@
 'use strict';
 
 var debug = require('debug')('base:config:schema');
-var expanders = require('./lib/expanders');
+var fields = require('./lib/fields');
 var utils = require('./lib/utils');
 
 module.exports = function configSchema(app, options) {
@@ -21,61 +21,61 @@ module.exports = function configSchema(app, options) {
   // Configuration, settings and data
   schema
     .field('options', ['object', 'boolean'], {
-      normalize: expanders.options(app, opts)
+      normalize: fields.options(app, opts)
     })
     .field('data', ['object', 'boolean'], {
-      normalize: expanders.data(app, opts)
+      normalize: fields.data(app, opts)
     });
 
   // modules
   schema
     .field('helpers', ['array', 'object', 'string'], {
-      normalize: expanders.helpers(app, opts)
+      normalize: fields.helpers(app, opts)
     })
     .field('asyncHelpers', ['array', 'object', 'string'], {
-      normalize: expanders.asyncHelpers(app, opts)
+      normalize: fields.asyncHelpers(app, opts)
     })
     .field('engine', ['array', 'object', 'string'], {
-      normalize: expanders.engines(app, opts)
+      normalize: fields.engines(app, opts)
     })
     .field('engines', ['array', 'object', 'string'], {
-      normalize: expanders.engines(app, opts)
+      normalize: fields.engines(app, opts)
     })
     .field('plugins', ['array', 'object', 'string'], {
-      normalize: expanders.plugins(app, opts)
+      normalize: fields.plugins(app, opts)
     })
     .field('use', ['array', 'object', 'string'], {
-      normalize: expanders.use(app, opts)
+      normalize: fields.use(app, opts)
     });
 
   // misc
   schema
     .field('tasks', ['array', 'string'], {
-      normalize: expanders.tasks(app, opts)
+      normalize: fields.tasks(app, opts)
     })
     .field('related', ['array', 'object', 'string'], {
-      normalize: expanders.related(app, opts)
+      normalize: fields.related(app, opts)
     })
     .field('reflinks', ['array', 'object', 'string'], {
-      normalize: expanders.reflinks(app, opts)
+      normalize: fields.reflinks(app, opts)
     })
     .field('toc', ['object', 'string'], {
-      normalize: expanders.toc(app, opts)
+      normalize: fields.toc(app, opts)
     });
 
   // template related
   schema
     .field('create', 'object', {
-      normalize: expanders.create(app, opts)
+      normalize: fields.create(app, opts)
     })
     .field('layout', ['object', 'string', 'boolean', 'null'], {
-      normalize: expanders.layout(app, opts)
+      normalize: fields.layout(app, opts)
     })
     .field('templates', ['array', 'object'], {
-      normalize: expanders.views(app, opts)
+      normalize: fields.views(app, opts)
     })
     .field('views', ['array', 'object'], {
-      normalize: expanders.views(app, opts)
+      normalize: fields.views(app, opts)
     });
 
   var fn = schema.normalize;

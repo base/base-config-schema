@@ -18,7 +18,7 @@ describe('.field.helpers', function() {
 
   describe('helpers', function() {
     it('should throw when a module does not exist', function(cb) {
-      var schema = configSchema(app);
+      var schema = configSchema(app, {strictRequire: true});
 
       try {
         schema.normalize({helpers: ['foo-bar-baz']});

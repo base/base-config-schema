@@ -19,7 +19,7 @@ describe('.field.engines', function() {
 
   describe('engines', function() {
     it('should throw when a module does not exist', function(cb) {
-      var schema = configSchema(app);
+      var schema = configSchema(app, {strictRequire: true});
 
       try {
         schema.normalize({engines: ['foo-bar-baz']});

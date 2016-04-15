@@ -118,7 +118,7 @@ describe('.field.use', function() {
     });
 
     it('should throw when a module does not exist', function(cb) {
-      var schema = configSchema(app);
+      var schema = configSchema(app, {strictRequire: true});
 
       try {
         schema.normalize({use: ['foo-bar-baz']});
