@@ -14,6 +14,10 @@ var utils = require('./lib/utils');
 module.exports = function configSchema(app, options) {
   debug('initializing <%s>, called from <%s>', __filename, module.parent.id);
 
+  if (typeof app.pkg === 'undefined') {
+    app.use(utils.pkg());
+  }
+
   var opts = utils.merge({sortArrays: false, omitEmpty: true}, options);
   var schema = new utils.Schema(opts);
   schema.app = app;
