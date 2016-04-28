@@ -27,7 +27,7 @@ describe('base-config-schema', function() {
     assert(schema.fields.hasOwnProperty('foo'));
   });
 
-  it('should normalize the given object', function() {
+  it('should normalize properties that do not exist', function() {
     var schema = configSchema(app)
       .field('foo', 'string', {
         normalize: function() {

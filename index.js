@@ -82,11 +82,21 @@ module.exports = function configSchema(app, options) {
       normalize: fields.views(app, opts)
     });
 
+  var fieldFn = schema.normalizeField;
+  schema.normalizeField = function(key) {
+    var val = fieldFn.apply(schema, arguments);
+    if (typeof val !== 'undefined') {
+      debug('normalized', key, val);
+    }
+    return val;
+  };
+
   var fn = schema.normalize;
   schema.normalize = function(config) {
     if (config.isNormalized) {
       return config;
     }
+
     var obj = fn.apply(this, arguments);
     utils.define(obj, 'isNormalized', true);
     return obj;
