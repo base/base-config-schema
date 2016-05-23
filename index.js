@@ -33,6 +33,9 @@ module.exports = function configSchema(app, options) {
 
   // modules
   schema
+    .field('generators', ['array', 'object', 'string'], {
+      normalize: fields.generators(app, opts)
+    })
     .field('helpers', ['array', 'object', 'string'], {
       normalize: fields.helpers(app, opts)
     })
