@@ -8,7 +8,7 @@ var app;
 
 describe('.related', function() {
   beforeEach(function() {
-    app = new Base();
+    app = new Base({isApp: true});
   });
 
   it('should move a string value to `related.list`', function() {

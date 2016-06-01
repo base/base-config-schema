@@ -8,7 +8,7 @@ var app;
 
 describe('.data', function() {
   beforeEach(function() {
-    app = new Base();
+    app = new Base({isApp: true});
   });
 
   it('should move booleans to `show` property', function() {

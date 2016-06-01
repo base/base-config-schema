@@ -79,7 +79,7 @@ module.exports = function configSchema(app, options) {
       normalize: fields.layout(app, opts)
     })
     .field('templates', ['array', 'object'], {
-      normalize: fields.views(app, opts)
+      normalize: fields.templates(app, opts)
     })
     .field('views', ['array', 'object'], {
       normalize: fields.views(app, opts)

@@ -14,7 +14,7 @@ var dir = path.resolve(__dirname, '..');
 
 describe('.field.engine', function() {
   beforeEach(function() {
-    app = new Base();
+    app = new Base({isApp: true});
   });
 
   describe('engines', function() {

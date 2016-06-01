@@ -13,7 +13,7 @@ var dir = path.resolve(__dirname, '..');
 
 describe('.field.helpers', function() {
   beforeEach(function() {
-    app = new Base();
+    app = new Base({isApp: true});
   });
 
   describe('helpers', function() {

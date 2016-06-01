@@ -8,7 +8,7 @@ var app;
 
 describe('.toc', function() {
   beforeEach(function() {
-    app = new Base();
+    app = new Base({isApp: true});
   });
 
   it('should return an object', function() {

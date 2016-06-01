@@ -8,7 +8,7 @@ var app;
 
 describe('.tasks', function() {
   beforeEach(function() {
-    app = new Base();
+    app = new Base({isApp: true});
   });
 
   it('should arrayify a string', function() {

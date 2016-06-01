@@ -8,7 +8,7 @@ var app;
 
 describe('.layout', function() {
   beforeEach(function() {
-    app = new Base();
+    app = new Base({isApp: true});
   });
 
   it('should not modify layout when it is a string', function() {
