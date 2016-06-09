@@ -14,15 +14,15 @@ describe('.templates', function() {
   it('should get templates on the root of the object from a glob', function() {
     var schema = configSchema(app);
     var obj = schema.normalize({templates: {templates: './test/fixtures/templates/*'}});
-    assert(obj.templates.templates.hasOwnProperty('test/fixtures/templates/foo.md'));
-    assert(obj.templates.templates.hasOwnProperty('test/fixtures/templates/bar.hbs'));
+    assert(obj.templates.templates.hasOwnProperty('foo.md'));
+    assert(obj.templates.templates.hasOwnProperty('bar.hbs'));
   });
 
   it('should get templates from an array of globs', function() {
     var schema = configSchema(app);
     var obj = schema.normalize({templates: {templates: ['./test/fixtures/templates/*']}});
-    assert(obj.templates.templates.hasOwnProperty('test/fixtures/templates/foo.md'));
-    assert(obj.templates.templates.hasOwnProperty('test/fixtures/templates/bar.hbs'));
+    assert(obj.templates.templates.hasOwnProperty('foo.md'));
+    assert(obj.templates.templates.hasOwnProperty('bar.hbs'));
   });
 
   it('should get globs of templates from an object', function() {
@@ -34,8 +34,8 @@ describe('.templates', function() {
       }
     });
 
-    assert(obj.templates.pages.hasOwnProperty('test/fixtures/templates/foo.md'));
-    assert(obj.templates.posts.hasOwnProperty('test/fixtures/templates/bar.hbs'));
+    assert(obj.templates.pages.hasOwnProperty('foo.md'));
+    assert(obj.templates.posts.hasOwnProperty('bar.hbs'));
   });
 
   it('should get template objects from an object', function() {
