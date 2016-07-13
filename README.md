@@ -45,7 +45,7 @@ Register async template helpers. Can be an array of module names or filepaths, o
 }
 ```
 
-### [.disable](lib/fields/disable.js#L18)
+### [.disable](lib/fields/disable.js#L16)
 
 Disable one or more options. This is the API-equivalent of calling `app.disable('foo')`, or `app.option('foo', false)`.
 
@@ -57,7 +57,7 @@ Disable one or more options. This is the API-equivalent of calling `app.disable(
 {disable: ['foo', 'bar']}
 ```
 
-### [.enable](lib/fields/enable.js#L18)
+### [.enable](lib/fields/enable.js#L16)
 
 Enable one or more options. This is the API-equivalent of calling `app.enable('foo')`, or `app.option('foo', false)`.
 
