@@ -86,5 +86,46 @@ describe('.field.middleware', function() {
       });
       assert.deepEqual(config.middleware.onLoad[0], { name: 'verb-reflinks', fn: fn, options: {foo: 'bar'} });
     });
+
+    it('should normalize options on an array of middleware objects', function() {
+      var schema = configSchema(app);
+      var one = function(options) {
+        return function(file, next) {
+          next();
+        }
+      };
+      var two = function(options) {
+        return function(file, next) {
+          next();
+        }
+      };
+
+      var config = schema.normalize({
+        middleware: {
+          onLoad: [
+            {
+              options: {foo: 'bar'},
+              one: one
+            },
+            {
+              options: {baz: 'qux'},
+              two: two
+            }
+          ]
+        }
+      });
+
+      assert.deepEqual(config.middleware.onLoad[0], {
+        name: 'one',
+        options: {foo: 'bar'},
+        fn: one
+      });
+
+      assert.deepEqual(config.middleware.onLoad[1], {
+        name: 'two',
+        options: {baz: 'qux'},
+        fn: two
+      });
+    });
   });
 });
