@@ -48,6 +48,9 @@ module.exports = function configSchema(app, options) {
     .field('engines', ['array', 'object', 'string'], {
       normalize: fields.engines(app, opts)
     })
+    .field('middleware', ['object'], {
+      normalize: fields.middleware(app, opts)
+    })
     .field('plugins', ['array', 'object', 'string'], {
       normalize: fields.plugins(app, opts)
     })
