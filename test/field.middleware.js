@@ -127,5 +127,64 @@ describe('.field.middleware', function() {
         fn: two
       });
     });
+
+    it('should use the specified method', function() {
+      var schema = configSchema(app);
+      var one = {
+        foo: function(options) {
+          return function(file, next) {
+            next();
+          }
+        },
+        bar: function(options) {
+          return function(file, next) {
+            next();
+          }
+        }
+      };
+      var two = {
+        foo: function(options) {
+          return function(file, next) {
+            next();
+          }
+        },
+        bar: function(options) {
+          return function(file, next) {
+            next();
+          }
+        }
+      };
+
+      var config = schema.normalize({
+        middleware: {
+          onLoad: [
+            {
+              options: {foo: 'bar'},
+              method: 'foo',
+              one: one
+            },
+            {
+              options: {baz: 'qux'},
+              method: 'bar',
+              two: two
+            }
+          ]
+        }
+      });
+
+      assert.deepEqual(config.middleware.onLoad[0], {
+        name: 'one',
+        method: 'foo',
+        options: {foo: 'bar'},
+        fn: one.foo
+      });
+
+      assert.deepEqual(config.middleware.onLoad[1], {
+        name: 'two',
+        method: 'bar',
+        options: {baz: 'qux'},
+        fn: two.bar
+      });
+    });
   });
 });
