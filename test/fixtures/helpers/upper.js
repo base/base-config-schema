@@ -1,1 +1,1 @@
-module.exports = function upper() {}
+module.exports = function upper() {};

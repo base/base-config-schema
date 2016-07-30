@@ -1,2 +1,2 @@
-exports.md = function() {}
-exports.hbs = function() {}
+exports.md = function() {};
+exports.hbs = function() {};

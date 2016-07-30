@@ -1,1 +1,1 @@
-module.exports = function lower() {}
+module.exports = function lower() {};
