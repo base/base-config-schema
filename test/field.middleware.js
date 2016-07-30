@@ -2,13 +2,10 @@
 
 require('mocha');
 require('through2');
-var path = require('path');
 var assert = require('assert');
 var configSchema = require('..');
 var Base = require('base');
 var app;
-
-var dir = path.resolve(__dirname, '..');
 
 describe('.field.middleware', function() {
   beforeEach(function() {
@@ -92,12 +89,12 @@ describe('.field.middleware', function() {
       var one = function(options) {
         return function(file, next) {
           next();
-        }
+        };
       };
       var two = function(options) {
         return function(file, next) {
           next();
-        }
+        };
       };
 
       var config = schema.normalize({
@@ -134,24 +131,24 @@ describe('.field.middleware', function() {
         foo: function(options) {
           return function(file, next) {
             next();
-          }
+          };
         },
         bar: function(options) {
           return function(file, next) {
             next();
-          }
+          };
         }
       };
       var two = {
         foo: function(options) {
           return function(file, next) {
             next();
-          }
+          };
         },
         bar: function(options) {
           return function(file, next) {
             next();
-          }
+          };
         }
       };
 
