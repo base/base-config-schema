@@ -17,6 +17,18 @@ describe('.layout', function() {
     assert.deepEqual(obj, {layout: 'default'});
   });
 
+  it('should return false when null', function() {
+    var schema = configSchema(app);
+    var obj = schema.normalize({layout: null});
+    assert.deepEqual(obj, {layout: false});
+  });
+
+  it('should return false when false', function() {
+    var schema = configSchema(app);
+    var obj = schema.normalize({layout: false});
+    assert.deepEqual(obj, {layout: false});
+  });
+
   it('should create a sections object when defined on layout', function() {
     var schema = configSchema(app);
     var obj = schema.normalize({layout: {sections: {foo: 'bar'}, name: 'default'}});

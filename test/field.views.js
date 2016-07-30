@@ -34,7 +34,6 @@ describe('.views', function() {
       }
     });
 
-    assert(obj.views.pages.hasOwnProperty('foo.md'));
     assert(obj.views.posts.hasOwnProperty('bar.hbs'));
   });
 
@@ -55,5 +54,27 @@ describe('.views', function() {
 
     assert(obj.views.pages.hasOwnProperty('home'));
     assert(obj.views.posts.hasOwnProperty('other'));
+  });
+
+  it('should throw an error when collection is not an own property', function(cb) {
+    var schema = configSchema(app);
+    try {
+      schema.normalize({views: 42});
+      cb(new Error('expected an error'));
+    } catch (err) {
+      assert.equal(err.message, 'expected collections to be an object, received: "number"');
+      cb();
+    }
+  });
+
+  it('should throw an error when collection is invalid', function(cb) {
+    var schema = configSchema(app);
+    try {
+      schema.normalize({views: {posts: 42}});
+      cb(new Error('expected an error'));
+    } catch (err) {
+      assert.equal(err.message, 'expected views to be an object, string or array, received: "number"');
+      cb();
+    }
   });
 });

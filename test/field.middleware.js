@@ -58,6 +58,17 @@ describe('.field.middleware', function() {
       assert.deepEqual(config.middleware.onLoad[0], { name: 'foo', fn: fn, options: {} });
     });
 
+    it('should normalize a string', function() {
+      var schema = configSchema(app);
+      var fn = require('verb-reflinks');
+      var config = schema.normalize({
+        middleware: {
+          onLoad: 'verb-reflinks'
+        }
+      });
+      assert.deepEqual(config.middleware.onLoad[0], { name: 'verb-reflinks', fn: fn, options: {} });
+    });
+
     it('should normalize an object of middleware objects', function() {
       var schema = configSchema(app);
       var fn = require('verb-reflinks');
@@ -123,6 +134,35 @@ describe('.field.middleware', function() {
         options: {baz: 'qux'},
         fn: two
       });
+    });
+
+    it('should throw an error on unexpected keys', function(cb) {
+      var schema = configSchema(app);
+      var one = function(options) {
+        return function(file, next) {
+          next();
+        };
+      };
+      var two = function(options) {
+        return function(file, next) {
+          next();
+        };
+      };
+
+      try {
+        schema.normalize({
+          middleware: {
+            onLoad: [
+              {options: {foo: 'bar'}, blah: {}, one: one },
+              {options: {baz: 'qux'}, blah: {}, two: two}
+            ]
+          }
+        });
+        cb(new Error('expected an error'));
+      } catch (err) {
+        assert.equal(err.message, 'unexpected keys defined on middleware config: "blah, one"');
+        cb();
+      }
     });
 
     it('should use the specified method', function() {

@@ -23,6 +23,12 @@ describe('.tasks', function() {
     assert.deepEqual(obj, {tasks: ['default']});
   });
 
+  it('should return an empty array when value is not an array', function() {
+    var schema = configSchema(app);
+    var obj = schema.normalize({tasks: new Date()});
+    assert.deepEqual(obj, {tasks: []});
+  });
+
   it('should split comma-separated tasks', function() {
     var schema = configSchema(app);
     var obj = schema.normalize({tasks: 'foo,bar,baz'});

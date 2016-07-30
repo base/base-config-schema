@@ -12,11 +12,8 @@ var fields = require('./lib/fields');
 var utils = require('./lib/utils');
 
 module.exports = function configSchema(app, options) {
-  debug('initializing <%s>, called from <%s>', __filename, module.parent.id);
-
-  if (typeof app.pkg === 'undefined') {
-    app.use(utils.pkg());
-  }
+  debug('initializing from <%s>', __filename);
+  app.use(utils.pkg());
 
   var opts = utils.merge({sortArrays: false, omitEmpty: true}, options);
   var schema = new utils.Schema(opts);
@@ -90,11 +87,7 @@ module.exports = function configSchema(app, options) {
 
   var fieldFn = schema.normalizeField;
   schema.normalizeField = function(key) {
-    var val = fieldFn.apply(schema, arguments);
-    if (typeof val !== 'undefined') {
-      debug('normalized', key, val);
-    }
-    return val;
+    return fieldFn.apply(schema, arguments);
   };
 
   var fn = schema.normalize;
