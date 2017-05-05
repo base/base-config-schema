@@ -1,8 +1,8 @@
 /*!
- * base-config-schema <https://github.com/jonschlinkert/base-config-schema>
+ * base-config-schema <https://github.com/node-base/base-config-schema>
  *
- * Copyright (c) 2016, Jon Schlinkert.
- * Licensed under the MIT License.
+ * Copyright (c) 2016-2017, Jon Schlinkert.
+ * Released under the MIT License.
  */
 
 'use strict';
