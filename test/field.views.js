@@ -1,6 +1,7 @@
 'use strict';
 
 require('mocha');
+var path = require('path');
 var assert = require('assert');
 var configSchema = require('..');
 var Base = require('base');
@@ -9,6 +10,9 @@ var app;
 describe('.views', function() {
   beforeEach(function() {
     app = new Base({isApp: true});
+    app.options.renameKey = function(fp) {
+      return path.basename(fp);
+    };
   });
 
   it('should get templates on the root of the object from a glob', function() {

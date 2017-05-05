@@ -13,16 +13,12 @@ describe('.field.middleware', function() {
   });
 
   describe('middleware', function() {
-    it('should throw when a module does not exist', function(cb) {
+    it('should throw when a module does not exist', function() {
       var schema = configSchema(app, {strictRequire: true});
 
-      try {
+      assert.throws(function() {
         schema.normalize({middleware: ['foo-bar-baz']});
-        return cb(new Error('expected an error'));
-      } catch (err) {
-        assert.equal(err.message, 'expected package.json "base.middleware" to be an object');
-        cb();
-      }
+      }, /expected package\.json "base\.middleware" to be an object/);
     });
 
     it('should throw when a local module does not exist', function(cb) {
@@ -55,7 +51,7 @@ describe('.field.middleware', function() {
           }]
         }
       });
-      assert.deepEqual(config.middleware.onLoad[0], { name: 'foo', fn: fn, options: {} });
+      assert.deepEqual(config.middleware.onLoad[0], { name: 'foo', fn: fn});
     });
 
     it('should normalize a string', function() {
@@ -66,7 +62,7 @@ describe('.field.middleware', function() {
           onLoad: 'verb-reflinks'
         }
       });
-      assert.deepEqual(config.middleware.onLoad[0], { name: 'verb-reflinks', fn: fn, options: {} });
+      assert.deepEqual(config.middleware.onLoad[0], { name: 'verb-reflinks', fn: fn});
     });
 
     it('should normalize an object of middleware objects', function() {
@@ -79,7 +75,7 @@ describe('.field.middleware', function() {
           }
         }
       });
-      assert.deepEqual(config.middleware.onLoad[0], { name: 'verb-reflinks', fn: fn, options: {} });
+      assert.deepEqual(config.middleware.onLoad[0], { name: 'verb-reflinks', fn: fn});
     });
 
     it('should normalize options on middleware objects', function() {
