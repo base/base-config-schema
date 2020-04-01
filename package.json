@@ -32,7 +32,7 @@
     "has-glob": "^1.0.0",
     "has-value": "^0.3.1",
     "inflection": "^1.12.0",
-    "kind-of": "^3.2.0",
+    "kind-of": "^6.0.3",
     "lazy-cache": "^2.0.2",
     "load-templates": "^1.0.2",
     "map-schema": "^0.2.4",
